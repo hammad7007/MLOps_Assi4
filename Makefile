@@ -1,7 +1,7 @@
 install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
-
+	sudo apt install tesseract-ocr
 test:
 	python -m pytest -vvv --cov=hello --cov=greeting \
 		--cov=smath --cov=web tests
