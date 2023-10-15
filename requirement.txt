@@ -1,4 +1,0 @@
-pip install pytesseract
-pip install Pillow
-pip install PIL
-brew install tesseract
