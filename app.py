@@ -26,7 +26,7 @@ def img(input_image):
 
 # Create a Gradio interface
 iface = gr.Interface(
-    fn=perform_ocr,
+    fn=img,
     inputs="image",
     outputs="text",
     title="Image to Text OCR",
