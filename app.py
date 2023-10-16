@@ -24,14 +24,19 @@ def img(input_image):
     recognized_text = '\n'.join([result[1] for result in results])
     return recognized_text
 
+example_images = [
+    (np.zeros((100, 100, 3), dtype=np.uint8), './')
+]
+
 # Create a Gradio interface
 iface = gr.Interface(
-    fn=img,
+    fn=perform_ocr,
     inputs="image",
     outputs="text",
     title="Image to Text OCR",
-    description="Upload an image and get the text extracted from it.",
-    live=True
+    description="Upload an image and get the text extracted from it. This app can take only .jpg images and extract text from image of book or any artical",
+    live=True,
+    examples=example_images
 )
 
 # Launch the interface
