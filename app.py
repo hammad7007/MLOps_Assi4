@@ -3,6 +3,7 @@ import pytesseract
 from PIL import Image
 from PIL import UnidentifiedImageError
 import numpy as np
+import easyocr
 
 # Define the function to perform OCR
 def perform_ocr(input_image):
@@ -17,9 +18,15 @@ def perform_ocr(input_image):
     except UnidentifiedImageError as e:
         return "Invalid image format. Please upload a valid image."
 
+def img(input_image):
+    reader = easyocr.Reader(['en']) 
+    results = reader.readtext(input_image)
+    recognized_text = '\n'.join([result[1] for result in results])
+    return recognized_text
+
 # Create a Gradio interface
 iface = gr.Interface(
-    fn=perform_ocr,
+    fn=img,
     inputs="image",
     outputs="text",
     title="Image to Text OCR",
